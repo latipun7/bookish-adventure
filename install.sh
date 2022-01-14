@@ -5,7 +5,7 @@
 #
 # Install Dependencies and Dotfiles
 
-set -eo pipefail
+set -euo pipefail
 
 esc="\033"
 reset="${esc}[0m"
@@ -97,7 +97,7 @@ fi
 function install_fnm() {
   step "Install ${color6}fnm${reset}"
 
-  if [ "$USE_HOMEBREW" = "true" ]; then
+  if [ "${USE_HOMEBREW:-no}" = "true" ]; then
     if hash brew 2>/dev/null; then
       step "Brewing ${color6}fnm${reset} ..."
       brew install fnm
