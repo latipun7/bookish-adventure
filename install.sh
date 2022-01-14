@@ -159,8 +159,9 @@ success "${color6}fnm${reset}, ${color6}node${reset}, ${color6}bitwarden${reset}
 if bw login; then
   eval "$(bw unlock | grep -oE --color=never "(export BW_SESSION=".+")")"
 else
-! (env | grep -q 'BW_SESSION') &&
-  eval "$(bw unlock | grep -oE --color=never "(export BW_SESSION=".+")")"
+  if ! (env | grep -q 'BW_SESSION'); then
+    eval "$(bw unlock | grep -oE --color=never "(export BW_SESSION=".+")")"
+  fi
 fi
 
 # Bootstrap dotfiles
