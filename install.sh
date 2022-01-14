@@ -5,7 +5,7 @@
 #
 # Install Dependencies and Dotfiles
 
-set -euo pipefail
+set -eo pipefail
 
 esc="\033"
 reset="${esc}[0m"
